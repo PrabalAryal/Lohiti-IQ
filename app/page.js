@@ -26,7 +26,7 @@ function page() {
             </p>
 
             <div className="mt-8 justify-center sm:justify-start flex flex-wrap gap-4 text-center md:justify ">
-              <Link href="/rulepage">
+              <Link href="/rules">
                 <div className="block w-full rounded bg-orange-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-orange-700 focus:outline-none focus:ring active:bg-orange-500 sm:w-auto">
                   Get Started
                 </div>
