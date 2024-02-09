@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Nav = () => {
   const navLinks = [
-    { name: "TestIQ", path: "/rulepage" },
+    { name: "TestIQ", path: "/rules" },
     { name: "Blog", path: "/blog" },
     { name: "Ranking", path: "/ranking" },
   ];
@@ -16,7 +16,7 @@ const Nav = () => {
 
   return (
     <>
-      <header className="bg-white shadow-md border-b border-slate-300">
+      <header className="bg-white shadow-md p-1">
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-center sm:justify-between">
             <div className="md:flex md:items-center md:gap-12">
