@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Link from "next/link";
 
 const Nav = () => {
@@ -7,16 +8,20 @@ const Nav = () => {
     { name: "Blog", path: "/blog" },
     { name: "Ranking", path: "/ranking" },
   ];
+
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <>
       <header className="bg-white shadow-md border-b border-slate-300">
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 items-center justify-between">
+          <div className="flex h-16 items-center justify-center sm:justify-between">
             <div className="md:flex md:items-center md:gap-12">
               <Link href="/">
-                <h1 className="block text-3xl font-bold text-orange-600">
-                  LOGO
-                </h1>
+                <h1 className=" text-3xl font-bold text-orange-600">LOGO</h1>
               </Link>
             </div>
 
@@ -54,7 +59,10 @@ const Nav = () => {
               </div>
 
               <div className="block md:hidden">
-                <button className="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75">
+                <button
+                  onClick={toggleMenu}
+                  className="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-5 w-5"
@@ -74,6 +82,21 @@ const Nav = () => {
             </div>
           </div>
         </div>
+        {isOpen && (
+          <div className="block md:hidden">
+            <nav aria-label="Global">
+              <ul className="flex flex-col items-center gap-4 text-sm mb-4 ">
+                {navLinks.map((link) => (
+                  <Link href={link.path} key={link.name}>
+                    <li className="text-gray-500 w-[400px] rounded-lg p-1 flex justify-center items-center text-lg transition hover:text-gray-500/75 border border-slate-300 ">
+                      {link.name}
+                    </li>
+                  </Link>
+                ))}
+              </ul>
+            </nav>
+          </div>
+        )}
       </header>
     </>
   );
