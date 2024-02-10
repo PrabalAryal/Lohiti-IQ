@@ -17,7 +17,7 @@ const TestIQ = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/questions");
+      const response = await fetch("https://lohiti-serve.onrender.com/");
       const data = await response.json();
       setQuestions(data);
     } catch (error) {
