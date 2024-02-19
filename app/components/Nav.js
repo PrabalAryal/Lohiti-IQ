@@ -4,9 +4,8 @@ import Link from "next/link";
 
 const Nav = () => {
   const navLinks = [
-    { name: "TestIQ", path: "/rules" },
+    { name: "IQ", path: "/rules" },
     { name: "Blog", path: "/blog" },
-    { name: "Ranking", path: "/ranking" },
   ];
 
   const [isOpen, setIsOpen] = useState(false);
@@ -16,7 +15,7 @@ const Nav = () => {
 
   return (
     <>
-      <header className="bg-white shadow-md p-1">
+      <header className="bg-white shadow-md sticky top-0 left-0 z-10">
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-center sm:justify-between">
             <div className="md:flex md:items-center md:gap-12">

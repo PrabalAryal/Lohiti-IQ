@@ -1,6 +1,7 @@
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import NextTopLoader from "nextjs-toploader";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -13,6 +14,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={montserrat.className}>
+        <NextTopLoader />
         {children}
         <SpeedInsights />
       </body>
