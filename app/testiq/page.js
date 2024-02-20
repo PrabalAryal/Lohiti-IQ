@@ -8,8 +8,6 @@ import { useRouter } from "next/navigation";
 const TestIQ = () => {
   const router = useRouter();
   const [questions, setQuestions] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(5); // Set items per page to 5
   const [selectedOptions, setSelectedOptions] = useState({});
   const [minutes, setMinutes] = useState(5);
   const [seconds, setSeconds] = useState(0);
@@ -39,7 +37,7 @@ const TestIQ = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch("http://127.0.0.1:5000/");
+      const response = await fetch("http://127.0.0.1:5000/api/questions");
       const data = await response.json();
       setQuestions(data);
     } catch (error) {
@@ -48,32 +46,28 @@ const TestIQ = () => {
   };
 
   const submitAnswers = async () => {
-    console.log(selectedOptions); // Add this line
+    const allAnswers = [];
+    questions.forEach((question, index) => {
+      const selectedOption = selectedOptions[`${index}`] || "";
+      allAnswers.push(selectedOption);
+    });
+
+    console.log(allAnswers);
+
     try {
-      const response = await axios.post(
-        "https://lohiti-serve.onrender.com/answers",
-        selectedOptions
-      );
+      const response = await axios.post("http://127.0.0.1:5000/api/answers", {
+        answers: allAnswers,
+      });
       console.log(response.data);
     } catch (error) {
       console.error("error", error);
     }
   };
 
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = questions.slice(indexOfFirstItem, indexOfLastItem);
-
-  const totalPages = Math.ceil(questions.length / itemsPerPage);
-
-  const handleClick = (event) => {
-    setCurrentPage(Number(event.target.id));
-  };
-
   const handleOptionChange = (questionIndex, selectedOption) => {
     setSelectedOptions((prevState) => ({
       ...prevState,
-      [`${questionIndex}-page-${currentPage}`]: selectedOption,
+      [`${questionIndex}`]: selectedOption,
     }));
   };
 
@@ -90,7 +84,7 @@ const TestIQ = () => {
         </div>
         <form onSubmit={handleSubmit} method="POST">
           <div className="h-auto flex flex-col justify-center items-center my-5">
-            {currentItems.map((question, index) => (
+            {questions.map((question, index) => (
               <div key={index} className="w-full">
                 <div className="border border-slate-400 rounded-lg mx-10 sm:mx-20 my-3 p-3 text-lg">
                   <p>{question.question}</p>
@@ -99,12 +93,9 @@ const TestIQ = () => {
                       <input
                         type="radio"
                         id={`option-${optionIndex}`}
-                        name={`question-${index}-page-${currentPage}`}
+                        name={`question-${index}`}
                         value={option}
-                        checked={
-                          selectedOptions[`${index}-page-${currentPage}`] ===
-                          option
-                        }
+                        checked={selectedOptions[`${index}`] === option}
                         onChange={() => handleOptionChange(index, option)}
                         className="form-radio ml-4 mr-4 w-4 h-4 text-orange-500 border-orange-500 transition duration-300 ease-in-out hover:text-white hover:bg-orange-500"
                       />
@@ -116,38 +107,18 @@ const TestIQ = () => {
             ))}
           </div>
           <div className="flex justify-center items-center mb-6">
-            {currentPage === totalPages && (
-              <button
-                type="button"
-                onClick={() => {
-                  submitAnswers();
-                  router.push("/score");
-                }}
-                className="flex bg-orange-500 text-white font-bold p-3 rounded-md m-2"
-              >
-                Submit
-              </button>
-            )}
+            <button
+              type="button"
+              onClick={() => {
+                submitAnswers();
+                router.push("/score");
+              }}
+              className="flex bg-orange-500 text-white font-bold p-3 rounded-md m-2"
+            >
+              Submit
+            </button>
           </div>
         </form>
-        <div className="pagination flex justify-center items-center bg-slate-200">
-          {Array(totalPages)
-            .fill()
-            .map((_, index) => (
-              <button
-                key={index}
-                id={index + 1}
-                onClick={handleClick}
-                className={`w-12 rounded-md m-2 p-2 ${
-                  currentPage === index + 1
-                    ? "bg-white border text-orange-500 font-bold border-orange-500"
-                    : "bg-orange-500 text-white font-bold"
-                }`}
-              >
-                {index + 1}
-              </button>
-            ))}
-        </div>
       </div>
       <Footer />
     </>

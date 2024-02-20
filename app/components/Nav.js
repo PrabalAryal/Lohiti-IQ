@@ -20,7 +20,7 @@ const Nav = () => {
           <div className="flex h-16 items-center justify-center sm:justify-between">
             <div className="md:flex md:items-center md:gap-12">
               <Link href="/">
-                <h1 className=" text-3xl font-bold text-orange-600">LOGO</h1>
+                <h1 className=" text-3xl font-bold text-orange-600">LOHITI</h1>
               </Link>
             </div>
 
@@ -84,10 +84,10 @@ const Nav = () => {
         {isOpen && (
           <div className="block md:hidden">
             <nav aria-label="Global">
-              <ul className="flex flex-col items-center gap-4 text-sm mb-4 ">
+              <ul className="flex flex-col items-center text-sm  ">
                 {navLinks.map((link) => (
                   <Link href={link.path} key={link.name}>
-                    <li className="text-gray-500 w-[400px] rounded-lg p-1 flex justify-center items-center text-lg transition hover:text-gray-500/75 border border-slate-300 ">
+                    <li className="text-gray-500 w-[400px] rounded-lg p-1 flex justify-center items-center text-lg transition hover:text-gray-500/75 border border-slate-300 mb-4 ">
                       {link.name}
                     </li>
                   </Link>
