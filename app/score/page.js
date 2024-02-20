@@ -34,9 +34,11 @@ const ScorePage = () => {
           {loading ? (
             <p>Loading...</p>
           ) : (
-            <p className="text-3xl font-normal">
-              Your <span className="text-orange-600 font-bold">IQ</span> Score:{" "}
-              <span className="text-orange-600 font-bold">{score}</span>
+            <p className="text-3xl font-normal flex flex-col justify-center items-center">
+              IQ Score:{" "}
+              <span className="text-orange-600 font-bold text-8xl">
+                {score}
+              </span>
             </p>
           )}
         </div>

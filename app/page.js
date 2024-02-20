@@ -8,7 +8,7 @@ function page() {
     <div>
       <Nav />
 
-      <section className="relative">
+      <section className="relative ">
         <div className="absolute inset-0 bg-white/75 sm:bg-transparent sm:from-white/95 sm:to-white/25 ltr:sm:bg-gradient-to-r rtl:sm:bg-gradient-to-l"></div>
 
         <div className="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8">
@@ -21,8 +21,10 @@ function page() {
             </h1>
 
             <p className=" text-slate-600 mt-4 max-w-lg sm:text-xl/relaxed sm:text-left">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt
-              illo tenetur fuga ducimus numquam ea!
+              An Intelligence Quotient indicates a person's mental abilities
+              relative to others. Everyone has numerous specific mental
+              abilities, some of which can be measured accurately and are
+              reliable predictors of academic and financial success.
             </p>
 
             <div className="mt-8 justify-center sm:justify-start flex flex-wrap gap-4 text-center md:justify ">
