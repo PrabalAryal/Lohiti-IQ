@@ -16,7 +16,7 @@ const Rulepage = () => {
     }
 
     try {
-      const response = await fetch("https://localhost:5000/age", {
+      const response = await fetch("https://lohiti-serve.onrender.com//age", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -50,7 +50,7 @@ const Rulepage = () => {
             </p>
 
             <form onSubmit={handleSubmit}>
-              <div className="bg-slate-200 border border-slate-300 flex flex-col justify-center items-center p-2 mt-6 gap-3 rounded-lg">
+              <div className="bg-slate-100 border border-slate-200 flex flex-col justify-center items-center p-2 mt-6 gap-3 rounded-lg">
                 <p className="text-xl">Please enter your age: </p>
                 <input
                   type="number"

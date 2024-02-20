@@ -37,7 +37,9 @@ const TestIQ = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch("http://127.0.0.1:5000/api/questions");
+      const response = await fetch(
+        "https://lohiti-serve.onrender.com//api/questions"
+      );
       const data = await response.json();
       setQuestions(data);
     } catch (error) {
@@ -55,9 +57,12 @@ const TestIQ = () => {
     console.log(allAnswers);
 
     try {
-      const response = await axios.post("http://127.0.0.1:5000/api/answers", {
-        answers: allAnswers,
-      });
+      const response = await axios.post(
+        "https://lohiti-serve.onrender.com//api/answers",
+        {
+          answers: allAnswers,
+        }
+      );
       console.log(response.data);
     } catch (error) {
       console.error("error", error);
