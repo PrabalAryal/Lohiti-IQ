@@ -29,7 +29,7 @@ const ScorePage = () => {
     <>
       <Nav />
 
-      <div className=" flex justify-center items-center h-[100vh] gap-10 font-semibold">
+      <div className="justify-center items-center h-[100vh] gap-10 font-semibold">
         <div className="bg-slate-100  h-[50vh] flex items-center justify-center border border-slate-200 rounded-lg p-8 ">
           {loading ? (
             <p>Loading...</p>
@@ -41,7 +41,7 @@ const ScorePage = () => {
           )}
         </div>
         <div className="bg-slate-100  h-[50vh] flex flex-col items-center justify-center border border-slate-200 rounded-lg p-8 text-lg font-normal">
-          <p>Compare your Score.</p>
+          <p className="font-bold text-xl pb-3">Compare your Score.</p>
           <p>
             Above <span className="text-orange-600 font-semibold">130</span>:
             Very Gifted or highly intillegent.
