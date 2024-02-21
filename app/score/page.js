@@ -21,11 +21,7 @@ const ScorePage = () => {
         setLoading(false);
       }
     };
-
-    // Check if the page has been loaded before
     const isFirstLoad = localStorage.getItem("firstLoadDone");
-
-    // If the page hasn't been loaded before, reload the page and set 'firstLoadDone' to true
     if (!isFirstLoad) {
       localStorage.setItem("firstLoadDone", "true");
       setTimeout(() => {
@@ -42,7 +38,7 @@ const ScorePage = () => {
       <div className="justify-center items-center h-[100vh] gap-10 font-semibold">
         <div className="bg-slate-100  h-[50vh] flex items-center justify-center border border-slate-200 rounded-lg p-8 ">
           {loading ? (
-            <p>Loading...</p>
+            <p>Loading.....</p>
           ) : (
             <p className="text-3xl font-normal flex flex-col justify-center items-center">
               IQ Score:{" "}
