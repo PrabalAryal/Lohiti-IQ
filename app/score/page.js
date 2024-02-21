@@ -21,16 +21,22 @@ const ScorePage = () => {
         setLoading(false);
       }
     };
-    const isFirstLoad = localStorage.getItem("firstLoadDone");
-    if (!isFirstLoad) {
-      localStorage.setItem("firstLoadDone", "true");
+
+    fetchScore();
+  }, []); // Removed isFirstLoad check
+
+  useEffect(() => {
+    // Check if the page has been loaded before
+    const isFirstLoad = localStorage.getItem('firstLoadDone');
+  
+    // If the page hasn't been loaded before and the score is fetched, reload the page and set 'firstLoadDone' to true
+    if (score !== null && !isFirstLoad) {
+      localStorage.setItem('firstLoadDone', 'true');
       setTimeout(() => {
         window.location.reload();
       }, 50);
-    } else {
-      fetchScore();
     }
-  }, []);
+  }, [score]);
   return (
     <>
       <Nav />
