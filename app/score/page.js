@@ -25,7 +25,7 @@ const ScorePage = () => {
     if (!isFirstLoad) {
       localStorage.setItem("firstLoadDone", "true");
       setTimeout(() => {
-        window.location.reload(true);
+        window.location.reload();
       }, 50);
     } else {
       fetchScore();
