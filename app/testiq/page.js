@@ -9,7 +9,7 @@ const TestIQ = () => {
   const router = useRouter();
   const [questions, setQuestions] = useState([]);
   const [selectedOptions, setSelectedOptions] = useState({});
-  const [minutes, setMinutes] = useState(5);
+  const [minutes, setMinutes] = useState(8);
   const [seconds, setSeconds] = useState(0);
 
   useEffect(() => {

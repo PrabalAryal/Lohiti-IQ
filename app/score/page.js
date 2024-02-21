@@ -22,9 +22,19 @@ const ScorePage = () => {
       }
     };
 
-    fetchScore();
-  }, []);
+    // Check if the page has been loaded before
+    const isFirstLoad = localStorage.getItem("firstLoadDone");
 
+    // If the page hasn't been loaded before, reload the page and set 'firstLoadDone' to true
+    if (!isFirstLoad) {
+      localStorage.setItem("firstLoadDone", "true");
+      setTimeout(() => {
+        window.location.reload();
+      }, 50);
+    } else {
+      fetchScore();
+    }
+  }, []);
   return (
     <>
       <Nav />

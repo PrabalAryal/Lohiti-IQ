@@ -14,13 +14,29 @@ const Rulepage = () => {
             <h1 className="text-3xl font-extrabold sm:text-5xl">
               <strong className="font-extrabold text-orange-700 sm:block">
                 {" "}
-                Rules.{" "}
+                Rules{" "}
               </strong>
             </h1>
 
             <p className="mt-4 sm:text-xl/relaxed">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt
-              illo tenetur fuga ducimus numquam ea!
+              <ul className="text-">
+                <li>Time limit for this test is 8 minutes.</li>
+                <li>Test comprises of 20 questions.</li>
+                <li>There is no negative marking.</li>
+                <li>
+                  Once you submit the test, you will be redirected to the score
+                  page.
+                </li>
+                <li>Click on the start button to begin the test.</li>
+                <li>Click on the submit button to submit the test.</li>
+                <li>
+                  Refrain from using calculators or other external servics
+                  during the test.
+                </li>
+                <li>
+                  Unanswered questions will be considered as wrong answers.
+                </li>
+              </ul>
             </p>
 
             <Link href="/testiq">
